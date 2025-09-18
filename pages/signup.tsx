@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type React from 'react'
 import { useRouter } from 'next/router'
+import { AuthAPI, setToken } from '../lib/api'
 
 /**
  * Sign up page for creating a new account. This page stores a token in localStorage
@@ -12,10 +13,10 @@ export default function SignUpPage() {
   const [password, setPassword] = useState('')
   const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app you'd call an API to create the user. Here we just base64 encode the email.
-    localStorage.setItem('cashpe-token', btoa(email))
+    const { token } = await AuthAPI.register(email, password, name)
+    setToken(token)
     router.push('/')
   }
 

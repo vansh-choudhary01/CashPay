@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { AuthAPI, setToken } from '../lib/api'
 
 /**
  * Login page. Stores a token in localStorage to simulate authentication.
@@ -8,10 +9,10 @@ export default function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, call an API to authenticate.
-    localStorage.setItem('cashpe-token', btoa(email))
+    const { token } = await AuthAPI.login(email, password)
+    setToken(token)
     router.push('/')
   }
   return (

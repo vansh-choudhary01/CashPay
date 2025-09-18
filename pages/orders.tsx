@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { loadOrders, type Order } from '../store/orders'
+import { OrdersAPI } from '../lib/api'
 
 /**
  * Orders page: lists all created orders stored in localStorage.
  */
 export default function OrdersPage() {
-  const [orders, setOrders] = useState<Order[]>([])
+  const [orders, setOrders] = useState<any[]>([])
   useEffect(() => {
-    setOrders(loadOrders())
+    OrdersAPI.my().then((r) => setOrders(r.orders || [])).catch(() => setOrders([]))
   }, [])
   return (
     <div className="max-w-6xl mx-auto py-8 space-y-4">

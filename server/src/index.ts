@@ -10,6 +10,9 @@ import quoteRouter from './routes/quote'
 import ordersRouter from './routes/orders'
 import paymentsRouter from './routes/payments'
 import pickupRouter from './routes/pickup'
+import membershipRouter from './routes/membership'
+import reviewsRouter from './routes/reviews'
+import accessoriesRouter from './routes/accessories'
 
 const app = express()
 
@@ -35,6 +38,9 @@ app.use('/quotes', quoteRouter)
 app.use('/orders', ordersRouter)
 app.use('/payments', paymentsRouter)
 app.use('/pickup', pickupRouter)
+app.use('/membership', membershipRouter)
+app.use('/reviews', reviewsRouter)
+app.use('/accessories', accessoriesRouter)
 // TODO: mount routes (orders, pickup, payments, accessories, membership, reviews, admin)
 
 // Error handler
