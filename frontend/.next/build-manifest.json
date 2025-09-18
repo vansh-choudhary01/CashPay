@@ -32,6 +32,16 @@
       "static/chunks/main.js",
       "static/chunks/pages/accessories.js"
     ],
+    "/checkout/[orderId]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/checkout/[orderId].js"
+    ],
+    "/orders": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/orders.js"
+    ],
     "/profile": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -46,6 +56,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/sell.js"
+    ],
+    "/sell/[category]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/sell/[category].js"
     ]
   },
   "ampFirstPages": []

@@ -26,6 +26,11 @@ app.use(express.urlencoded({ extended: true }))
 const limiter = rateLimit({ windowMs: 60_000, max: 120 })
 app.use(limiter)
 
+app.use((_req, res, next) => {
+  console.log(_req.originalUrl);
+  next()
+})
+
 // Health route
 app.get('/health', (_req, res) => {
   res.json({ ok: true, service: 'cashpe-api', time: new Date().toISOString() })
